@@ -1,0 +1,19 @@
+/* #region hero */
+.hero_container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+	height: auto;
+	place-items: center;
+	width: 90%;
+}
+
+.hero_text {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	max-width: 400px;
+
+	text-align: left;
+}
+/* #endregion */

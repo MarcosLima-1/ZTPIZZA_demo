@@ -1,0 +1,119 @@
+.header_container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 90%;
+}
+.header_logo {
+	align-items: center;
+	gap: 5px;
+	color: var(--accent);
+	font-weight: 700;
+	font-size: 26px;
+}
+.header_nav {
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+}
+.header_links {
+	position: relative;
+	color: var(--text);
+}
+.header_links::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 2px;
+	background-color: var(--accent);
+	transition: width 0.3s;
+}
+.header_links:hover::after {
+	width: 100%;
+}
+.header_register {
+	display: flex;
+	gap: 1rem;
+}
+.header_button,
+.hidden .bar_nav_register,
+.hidden .menu_bar_nav_container,
+.menu_bar_nav {
+	display: none;
+}
+@media screen and (min-width: 851px) {
+	.header_button,
+	.menu_bar_nav {
+		display: none;
+	}
+}
+@media screen and (max-width: 850px) {
+	.header_nav,
+	.header_register {
+		display: none;
+	}
+	.header_button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: auto;
+		width: auto;
+		padding: 10px;
+		min-width: 50px;
+		border-radius: 10px;
+		gap: 1rem;
+		text-align: center;
+		text-wrap: nowrap;
+		font-style: normal;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 700;
+		background-color: var(--accent);
+		color: var(--buttont);
+		border: 0 solid #000;
+		transition: background-color 0.3s ease, transform 0.3s ease;
+		cursor: pointer;
+	}
+	.header_button:hover {
+		transform: scale(1.05);
+	}
+	.header_button:active {
+		transform: scale(0.95);
+	}
+	.menu_bar_nav {
+		background-color: var(--secondary);
+		position: fixed;
+		top: 0;
+		margin-top: 70px;
+		padding: 2rem;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		left: 0;
+	}
+	.menu_bar_nav_container {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		width: 90%;
+	}
+	.flex {
+		display: flex;
+		gap: 1rem;
+	}
+	.hidden {
+		display: none;
+	}
+	.bar_nav_register {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		width: 100%;
+	}
+	.hr_divider {
+		border-bottom: 2px solid #000;
+	}
+}

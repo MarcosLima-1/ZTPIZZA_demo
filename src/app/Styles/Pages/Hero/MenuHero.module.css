@@ -1,0 +1,56 @@
+.hero_menu_iconb{
+    position: absolute;
+    top: 0;
+    width: 150px;
+    z-index: -1;
+}
+
+.hero_menu_iconb:nth-child(1){
+left: 0;
+}
+
+.hero_menu_iconb:nth-child(2){
+right: 0;
+}
+
+.hero_menu_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero_menu_container span{
+    margin-left: 20px;
+}
+
+.boxes_menu{
+    display: grid;
+    grid-template-columns: repeat(3,350px);
+    gap: 2rem;
+}
+
+.box_menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    max-width: 350px;
+    background-color: var(--secondary);
+    transition: all ease 0.3s;
+}
+
+.box_menu:hover {
+background-color: var(--background);
+box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+.box_img {
+    max-width: 330px;
+}
