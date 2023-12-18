@@ -4,12 +4,22 @@ import Image from 'next/image';
 import { useSession, signOut } from 'next-auth/react';
 import React, { useState } from 'react';
 
+import Dropdown from '../Layout/DropDown';
+
 import styles from '../Styles/Layout/Header.module.css';
 
 export default function Header() {
-	const { data: session } = useSession();
-	const [menuVisible, setMenuVisible] = useState(false);
+	const { data: session, status: sessionStatus } = useSession();
+	const userData = session?.user;
+	const userName = userData?.name;
+	var userImage;
+	if (userData?.image) {
+		userImage = userData?.image;
+	} else {
+		userImage = '/img/profile.webp';
+	}
 
+	const [menuVisible, setMenuVisible] = useState(false);
 	const toggleDiv = () => {
 		setMenuVisible(!menuVisible);
 	};
@@ -17,6 +27,7 @@ export default function Header() {
 	const menuClasses = menuVisible
 		? `${styles.menu_bar_nav} ${styles.flex}`
 		: `${styles.menu_bar_nav}`;
+console.log(sessionStatus)
 	return (
 		<header>
 			<div className={styles.header_container}>
@@ -44,21 +55,11 @@ export default function Header() {
 					<Link
 						className={styles.header_links}
 						href={'/'}>
-						Contactos
+						Contatos
 					</Link>
-				</nav>
 
-				<button
-					onClick={toggleDiv}
-					className={styles.header_button}>
-					<Image
-						src='/img/bars.webp'
-						width='14'
-						sizes="(max-width: 24px) 100vw"
-						height='16'
-						alt='NavBar icon'
-					/>
-				</button>
+					<Dropdown title="Menu 1" links={[{ href: '/perfil', label: 'perfil' }, { href: '/page2', label: 'Page 2' }]} />
+				</nav>
 
 				<nav
 					id='menu_bar_nav'
@@ -101,29 +102,73 @@ export default function Header() {
 						</Link>
 					</div>
 				</nav>
+				<div className='flex'>
+					{sessionStatus == 'authenticated' && (
+						<div
+							data-dropdown
+							className={styles.header_signout}>
+							<button
+								data-dropdown-button
+								className={styles.header_button_perfil}
+								>
+								<Image
+									data-dropdown-button
+									src={userImage}
+									width='50'
+									height='50'
+									alt='Foto perfil'
+								/>
+							</button>
+							      <DropdownMenu isOpen={isOpen}>
+        {links.map((link, index) => (
+          <Link key={index} href={link.href}>
+            <MenuLink>{link.label}</MenuLink>
+          </Link>
+        ))}
+      </DropdownMenu>
+							<nav className={styles.profile_links}>
+								<div className={'flex center'}>
+									<Image
+										src={userImage}
+										width='50'
+										height='50'
+										alt='Foto perfil'
+									/>
+									{userName}
+								</div>
 
-				{session ? (
-					<nav className={styles.header_signout}>
-						<button
-							className='button'
-							onClick={() => signOut()}>
-							Sign out
-						</button>
-					</nav>
-				) : (
-					<nav className={styles.header_register}>
-						<Link
-							className='boutline'
-							href={'/Login'}>
-							Entrar
-						</Link>
-						<Link
-							className='button'
-							href={'/Registro'}>
-							Registrar
-						</Link>
-					</nav>
-				)}
+								<Link href='/Perfil'>Perfil</Link>
+								<Link href='/Pedidos'>Meus Pedidos</Link>
+								<button onClick={() => signOut()}>Sair</button>
+							</nav>
+						</div>
+					)}{' '}
+					{sessionStatus !== 'authenticated' && (
+						<nav className={styles.header_register}>
+							<Link
+								className='boutline'
+								href={'/Login'}>
+								Entrar
+							</Link>
+							<Link
+								className='button'
+								href={'/Registro'}>
+								Registrar
+							</Link>
+						</nav>
+					)}
+					<button
+						onClick={toggleDiv}
+						className={styles.header_button}>
+						<Image
+							src='/img/bars.webp'
+							width='14'
+							sizes='(max-width: 24px) 100vw'
+							height='16'
+							alt='NavBar icon'
+						/>
+					</button>
+				</div>
 			</div>
 		</header>
 	);

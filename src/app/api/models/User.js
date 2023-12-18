@@ -10,12 +10,10 @@ const userSchema = new Schema(
 		},
 		password: {
 			type: String,
-			// Torna a propriedade password opcional
 			required: false,
 		},
 		githubId: {
 			type: String,
-			// GitHubId seria exclusivo para usuários autenticados pelo GitHub
 			unique: true,
 		},
 	},

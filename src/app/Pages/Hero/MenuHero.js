@@ -4,6 +4,8 @@ import BoxMenu from '@/app/Pages/Hero/BoxMenu';
 
 import styles from '@/app/Styles/Pages/Hero/MenuHero.module.css';
 
+
+
 export default function MenuHero() {
 	return (
 		<section className='center'>

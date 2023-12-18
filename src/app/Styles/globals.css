@@ -1,6 +1,5 @@
-
 :root,
-html[data-theme="light"] {
+html[data-theme='light'] {
 	--text: #180202;
 	--background: #fafafa;
 	--primary: #ff6d4d;
@@ -9,8 +8,9 @@ html[data-theme="light"] {
 
 	--textP: #312727;
 	--buttont: #fde7e7;
+	--translucido: rgb(0,0,0,0)
 }
-html[data-theme="dark"] {
+html[data-theme='dark'] {
 	--text: #fde7e7;
 	--background: #050505;
 	--primary: #b32100;
@@ -37,7 +37,7 @@ body {
 	font-family: 'MerriweatherSans', sans-serif;
 }
 
-li{
+li {
 	text-align: left;
 }
 a {
@@ -70,6 +70,7 @@ img {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	height: auto;
+	display: block;
 	animation: opacityanim 1s;
 }
 
@@ -123,11 +124,11 @@ footer {
 	position: absolute;
 	bottom: 0;
 	z-index: 1;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.25);
-    padding: 1rem;
-    max-width: none;
+	width: 100%;
+	text-align: center;
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.25);
+	padding: 1rem;
+	max-width: none;
 	background-color: var(--primary);
 	color: var(--buttont);
 }

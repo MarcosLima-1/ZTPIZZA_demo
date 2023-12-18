@@ -54,3 +54,15 @@ box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.25);
 .box_img {
     max-width: 330px;
 }
+
+@media screen and (max-width: 1400px) {
+    .boxes_menu{
+        grid-template-columns: repeat(2,350px);
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .boxes_menu{
+        grid-template-columns: repeat(1,350px);
+    }
+}
